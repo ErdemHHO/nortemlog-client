@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useId } from "react";
 
 const origin = { x: 90, y: 310 };
 const destinations = [
@@ -15,6 +16,7 @@ const curve = (to: { x: number; y: number }) =>
 
 /** Schematic Türkiye → Europe route diagram. Decorative illustration, labelled for screen readers. */
 export function RouteMap() {
+  const dotsId = `dots-${useId().replace(/:/g, "")}`;
   return (
     <svg
       viewBox="0 0 560 420"
@@ -23,11 +25,11 @@ export function RouteMap() {
       className="h-auto w-full"
     >
       <defs>
-        <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+        <pattern id={dotsId} width="28" height="28" patternUnits="userSpaceOnUse">
           <circle cx="2" cy="2" r="1.2" fill="#fff" opacity="0.14" />
         </pattern>
       </defs>
-      <rect width="560" height="420" fill="url(#dots)" />
+      <rect width="560" height="420" fill={`url(#${dotsId})`} />
 
       {/* Logo-style corner brackets */}
       <path d="M8 60V8h52" fill="none" stroke="#fff" strokeWidth="3" />

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CtaBand } from "@/components/home/cta-band";
 import { Hero } from "@/components/home/hero";
+import { StatsBand } from "@/components/home/stats-band";
 import { OfficeCards } from "@/components/home/office-cards";
 import { ServiceCard } from "@/components/home/service-card";
 import { ButtonLink } from "@/components/ui/button";
@@ -13,7 +14,7 @@ import { carried, mission, processSteps, services, vision, whyUs } from "@/lib/s
 export const metadata = buildMetadata({
   title: "Nortem Log | Kapsamlı Lojistik Çözümleriyle Sınırları Aşın",
   description:
-    "Nortem Log; karayolu, denizyolu, havayolu, parsiyel ve ekspres taşımacılık, depolama, gümrükleme ve ihracat-ithalat hizmetleriyle Türkiye'den Avrupa'ya güvenilir lojistik. Hemen teklif alın.",
+    "Nortem Log; karayolu, denizyolu, havayolu, parsiyel ve ekspres taşımacılık, depolama, gümrükleme ve ihracat-ithalat hizmetleriyle Türkiye'den Avrupa'ya güvenilir lojistik. Hemen bize ulaşın.",
   path: "/",
 });
 
@@ -113,6 +114,8 @@ export default function HomePage() {
           </Stagger>
         </div>
       </section>
+
+      <StatsBand />
 
       <Section labelledBy="why-title" className="border-y border-line bg-surface">
         <SectionHeading id="why-title" eyebrow="Neden Nortem Log?" title="Sizin kargonuz, sizin kurallarınız" />
