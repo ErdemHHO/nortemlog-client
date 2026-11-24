@@ -3,7 +3,7 @@ import { Logo } from "@/components/layout/logo";
 import { SocialLinks } from "@/components/layout/social-links";
 import { Icon } from "@/components/ui/icon";
 import { Container } from "@/components/ui/section";
-import { nav, offices, quoteHref, services, site } from "@/lib/site";
+import { nav, offices, services, site } from "@/lib/site";
 
 const linkClass = "inline-block py-1.5 text-fog transition-colors hover:text-white";
 const headingClass = "mb-3 font-display text-lg font-bold uppercase tracking-wider";
@@ -28,7 +28,7 @@ export function Footer() {
             Sayfalar
           </h2>
           <ul>
-            {[...nav, { href: quoteHref, label: "Teklif Al" }].map(({ href, label }) => (
+            {nav.map(({ href, label }) => (
               <li key={href}>
                 <Link href={href} className={linkClass}>
                   {label}

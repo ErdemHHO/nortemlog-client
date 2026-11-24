@@ -1,11 +1,11 @@
-import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
+import { ButtonAnchor } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/motion";
 import { Bracket, Container } from "@/components/ui/section";
-import { quoteHref, site, whatsappUrl } from "@/lib/site";
+import { site, whatsappUrl } from "@/lib/site";
 
 export function CtaBand({
-  title = "Gönderiniz için teklif alın",
-  text = "Çıkış ve varış noktasını, yükünüzü paylaşın; size en uygun çözümle dönelim.",
+  title = "Gönderiniz için bize ulaşın",
+  text = "Çıkış ve varış noktasını, yükünüzü paylaşın; size en uygun çözümle ve teklifle dönelim.",
 }: {
   title?: string;
   text?: string;
@@ -28,20 +28,16 @@ export function CtaBand({
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-fog">{text}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href={quoteHref} icon="arrow">
-                  Teklif Al
-                </ButtonLink>
                 <ButtonAnchor
                   href={whatsappUrl("Merhaba, Avrupa'ya gönderi için bilgi almak istiyorum.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  variant="outline"
                   icon="whatsapp"
                   aria-label="WhatsApp ile yazın (yeni sekmede açılır)"
                 >
                   WhatsApp
                 </ButtonAnchor>
-                <ButtonAnchor href={`tel:${site.phones[0].tel}`} variant="ghost" icon="phone">
+                <ButtonAnchor href={`tel:${site.phones[0].tel}`} variant="outline" icon="phone">
                   Ara
                 </ButtonAnchor>
               </div>

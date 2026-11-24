@@ -1,17 +1,25 @@
-import { QuoteForm } from "@/components/forms/quote-form";
 import { ButtonAnchor } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
-import { Reveal } from "@/components/ui/motion";
-import { Bracket, Container, PageHero } from "@/components/ui/section";
+import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
+import { Bracket, Container, PageHero, Section, SectionHeading } from "@/components/ui/section";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { processSteps, site, whatsappUrl } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Teklif Al",
   description:
-    "Türkiye'den Avrupa'ya gönderiniz için ücretsiz teklif isteyin. Formu doldurun, Nortem Log ekibi en kısa sürede sizinle iletişime geçsin.",
+    "Türkiye'den Avrupa'ya gönderiniz için teklif isteyin. WhatsApp, telefon veya e-posta ile yük bilgilerinizi paylaşın, Nortem Log ekibi size dönsün.",
   path: "/teklif-al",
 });
+
+const shareList = [
+  "Çıkış ve varış noktası (şehir / ülke)",
+  "Yükün türü, adedi ve yaklaşık ağırlığı",
+  "Ölçüler veya palet sayısı",
+  "Tercih ettiğiniz taşıma türü (kara, deniz, hava, parsiyel, ekspres)",
+  "Gönderi için istediğiniz tarih aralığı",
+] as const;
 
 const ld = {
   "@context": "https://schema.org",
@@ -35,69 +43,80 @@ const ld = {
 };
 
 export default function QuotePage() {
+  const message = "Merhaba, Avrupa'ya gönderi için teklif almak istiyorum.";
+
   return (
     <>
       <PageHero
         eyebrow="Teklif Al"
         title="Gönderiniz için teklif isteyin"
-        lead="Formu doldurun; yükünüzü inceleyip size en uygun çözümle dönelim."
+        lead="Yükünüzün bilgilerini bize iletin; inceleyip size en uygun çözümle ve teklifle dönelim."
       />
 
-      <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+      <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
         <Reveal>
           <Bracket className="border border-line bg-surface p-6 sm:p-10">
-            <h2 className="sr-only">Teklif talep formu</h2>
-            <QuoteForm />
+            <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl">
+              Teklif için bize şunları iletin
+            </h2>
+            <ul className="mt-6 space-y-3">
+              {shareList.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Icon name="check" className="mt-0.5 size-5 shrink-0 text-brand-text" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <ButtonAnchor
+                href={whatsappUrl(message)}
+                target="_blank"
+                rel="noopener noreferrer"
+                icon="whatsapp"
+                aria-label="WhatsApp ile teklif isteyin (yeni sekmede açılır)"
+              >
+                WhatsApp ile yazın
+              </ButtonAnchor>
+              <ButtonAnchor
+                href={`mailto:${site.email}?subject=${encodeURIComponent("Teklif talebi")}`}
+                variant="outline"
+                icon="mail"
+              >
+                E-posta gönderin
+              </ButtonAnchor>
+            </div>
           </Bracket>
         </Reveal>
 
-        <aside aria-label="Süreç ve hızlı iletişim" className="space-y-10">
-          <Reveal delay={0.1}>
-            <h2 className="font-display text-2xl font-bold uppercase tracking-tight">Sonrasında ne olur?</h2>
-            <ol className="mt-5 space-y-5">
-              {processSteps.map(({ title, text }, index) => (
-                <li key={title} className="flex gap-4">
-                  <span
-                    aria-hidden="true"
-                    className="flex size-9 shrink-0 items-center justify-center rounded-sm border border-brand font-display text-lg font-bold text-brand-text"
-                  >
-                    {index + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold">{title}</h3>
-                    <p className="text-fog">{text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-
-          <Reveal delay={0.15}>
+        <Reveal delay={0.1}>
+          <aside aria-label="Hızlı iletişim">
             <h2 className="font-display text-2xl font-bold uppercase tracking-tight">Hemen ulaşın</h2>
-            <p className="mt-2 text-fog">Acil gönderiler için doğrudan arayabilir ya da yazabilirsiniz.</p>
+            <p className="mt-2 text-fog">Acil gönderiler için doğrudan arayabilirsiniz.</p>
             <div className="mt-5 flex flex-col gap-3">
               {site.phones.map(({ display, tel }) => (
                 <ButtonAnchor key={tel} href={`tel:${tel}`} variant="outline" icon="phone">
                   {display}
                 </ButtonAnchor>
               ))}
-              <ButtonAnchor
-                href={whatsappUrl("Merhaba, Avrupa'ya gönderi için teklif almak istiyorum.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="ghost"
-                icon="whatsapp"
-                aria-label="WhatsApp ile yazın (yeni sekmede açılır)"
-              >
-                WhatsApp ile yazın
-              </ButtonAnchor>
-              <ButtonAnchor href={`mailto:${site.email}`} variant="ghost" icon="mail">
-                {site.email}
-              </ButtonAnchor>
             </div>
-          </Reveal>
-        </aside>
+          </aside>
+        </Reveal>
       </Container>
+
+      <Section labelledBy="steps-title" className="border-t border-line bg-surface">
+        <SectionHeading id="steps-title" eyebrow="Süreç" title="Sonrasında ne olur?" />
+        <Stagger as="ol" className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map(({ title, text }, index) => (
+            <StaggerItem as="li" key={title} className="border-l-2 border-brand pl-6">
+              <span aria-hidden="true" className="font-display text-6xl font-bold leading-none text-white/10">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-tight">{title}</h3>
+              <p className="mt-2 leading-relaxed text-fog">{text}</p>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </Section>
       <JsonLd data={ld} />
     </>
   );

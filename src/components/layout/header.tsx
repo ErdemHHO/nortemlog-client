@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/layout/logo";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonAnchor } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import { nav, quoteHref } from "@/lib/site";
+import { nav, whatsappUrl } from "@/lib/site";
 
 export function Header() {
   const pathname = usePathname();
@@ -63,9 +63,16 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <div className="hidden sm:block">
-            <ButtonLink href={quoteHref} icon="arrow" className="min-h-11 px-5">
-              Teklif Al
-            </ButtonLink>
+            <ButtonAnchor
+              href={whatsappUrl("Merhaba, bilgi almak istiyorum.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              icon="whatsapp"
+              className="min-h-11 px-5"
+              aria-label="WhatsApp ile yazın (yeni sekmede açılır)"
+            >
+              WhatsApp
+            </ButtonAnchor>
           </div>
           <button
             ref={toggleRef}
@@ -93,7 +100,7 @@ export function Header() {
             className="absolute inset-x-0 top-full h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-ink lg:hidden"
           >
             <nav aria-label="Mobil menü" className="flex flex-col px-5 py-6">
-              {[...nav, { href: quoteHref, label: "Teklif Al" }].map(({ href, label }, index) => (
+              {nav.map(({ href, label }, index) => (
                 <motion.div
                   key={href}
                   initial={{ opacity: 0, x: -16 }}

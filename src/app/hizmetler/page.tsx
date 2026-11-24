@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { CtaBand } from "@/components/home/cta-band";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonAnchor } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import { Bracket, Container, PageHero, Section, SectionHeading } from "@/components/ui/section";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
-import { carried, quoteHref, services, site } from "@/lib/site";
+import { carried, services, site, whatsappUrl } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Hizmetler",
@@ -93,15 +93,17 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <ButtonLink
-                    href={quoteHref}
+                  <ButtonAnchor
+                    href={whatsappUrl(`Merhaba, ${service.title} hakkında bilgi almak istiyorum.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     variant="outline"
-                    icon="arrow"
+                    icon="whatsapp"
                     className="mt-7"
-                    aria-label={`${service.title} için teklif al`}
+                    aria-label={`${service.title} için WhatsApp'tan bilgi al (yeni sekmede açılır)`}
                   >
-                    Teklif al
-                  </ButtonLink>
+                    Bilgi al
+                  </ButtonAnchor>
                 </div>
               </article>
             </Bracket>

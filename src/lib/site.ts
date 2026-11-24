@@ -85,10 +85,9 @@ export const nav = [
   { href: "/", label: "Ana Sayfa" },
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/hizmetler", label: "Hizmetler" },
+  { href: "/teklif-al", label: "Teklif Al" },
   { href: "/iletisim", label: "İletişim" },
 ] as const;
-
-export const quoteHref = "/teklif-al";
 
 export type IconId =
   | "truck"
@@ -247,7 +246,7 @@ export const vision =
   "Küresel lojistik alanında yenilikçi ve sürdürülebilir liderliği hedefliyoruz.";
 
 export const processSteps = [
-  { title: "Talebinizi iletin", text: "Teklif formunu doldurun ya da bizi arayın." },
+  { title: "Talebinizi iletin", text: "Bizi arayın veya WhatsApp'tan yazın." },
   { title: "Teklifinizi alın", text: "Yükünüze uygun çözümü ve fiyatı paylaşırız." },
   { title: "Yükünüzü teslim alalım", text: "Planlanan zamanda yükünüzü adresinizden alırız." },
   { title: "Varışta teslim", text: "Yükünüz varış noktasında güvenle teslim edilir." },

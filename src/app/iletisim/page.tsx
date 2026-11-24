@@ -1,13 +1,13 @@
 import { CtaBand } from "@/components/home/cta-band";
 import { MapEmbed } from "@/components/home/map-embed";
 import { OfficeCards } from "@/components/home/office-cards";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonAnchor } from "@/components/ui/button";
 import { Icon, type IconId } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
 import { HoverCard, Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import { Bracket, Container, PageHero, Section, SectionHeading } from "@/components/ui/section";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
-import { quoteHref, site, whatsappUrl } from "@/lib/site";
+import { site, whatsappUrl } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "İletişim",
@@ -140,17 +140,17 @@ export default function ContactPage() {
             <div aria-hidden="true" className="absolute -top-24 -right-24 size-72 rounded-full bg-brand/15 blur-[90px]" />
             <div className="relative">
               <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-tight">
-                Detaylı teklif mi lazım?
+                Teklif için bize yazın
               </h2>
               <p className="mt-3 leading-relaxed text-fog">
-                Çıkış ve varış noktasını, yük bilgilerinizi form üzerinden paylaşın; size özel
-                teklifle dönelim.
+                Çıkış ve varış noktasını, yük bilgilerinizi e-posta ile paylaşın; size özel teklifle
+                dönelim.
               </p>
             </div>
             <div className="relative">
-              <ButtonLink href={quoteHref} icon="arrow" className="w-full sm:w-auto">
-                Teklif Al
-              </ButtonLink>
+              <ButtonAnchor href={`mailto:${site.email}`} icon="mail" className="w-full sm:w-auto">
+                E-posta gönder
+              </ButtonAnchor>
             </div>
           </Bracket>
         </Reveal>
