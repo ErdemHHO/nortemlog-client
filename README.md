@@ -32,7 +32,7 @@ Environment variables (see [`.env.example`](.env.example)):
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, Open Graph |
-| `NEXT_PUBLIC_INSTAGRAM_URL`, `NEXT_PUBLIC_FACEBOOK_URL` | Social profile links |
+| `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile link |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` | Mail transport for form submissions |
 | `INQUIRY_TO_EMAIL` | Inbox that receives quote requests |
 | `INQUIRY_WEBHOOK_URL` | Optional extra channel (Slack, CRM, ...) |

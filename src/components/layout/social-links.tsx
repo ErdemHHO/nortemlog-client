@@ -3,7 +3,6 @@ import { site, whatsappUrl } from "@/lib/site";
 
 const links: { id: IconId; label: string; href: string }[] = [
   { id: "instagram", label: "Instagram", href: site.social.instagram },
-  { id: "facebook", label: "Facebook", href: site.social.facebook },
   { id: "whatsapp", label: "WhatsApp", href: whatsappUrl() },
 ];
 

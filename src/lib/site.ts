@@ -33,8 +33,6 @@ export const site = {
   whatsappNumber: "905616111147",
   social: {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/nortemlog",
-    // CONFIRM: the live site has no Facebook page link yet; replace with the real profile.
-    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "https://www.facebook.com/nortemlog",
   },
   map: {
     lat: 39.9611617,

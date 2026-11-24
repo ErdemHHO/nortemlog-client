@@ -84,7 +84,6 @@ const organizationLd = {
         contactType: "customer service",
         availableLanguage: ["Turkish"],
       })),
-      // Facebook is omitted until the real profile URL is confirmed.
       sameAs: [site.social.instagram],
     },
     {

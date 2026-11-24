@@ -12,7 +12,7 @@ import { quoteHref, site, whatsappUrl } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "İletişim",
   description:
-    "Nortem Log ile iletişime geçin: telefon, WhatsApp, e-posta, Instagram ve Facebook üzerinden ulaşın; Ankara, İstanbul ve Almanya ofislerimizi görün.",
+    "Nortem Log ile iletişime geçin: telefon, WhatsApp, e-posta ve Instagram üzerinden ulaşın; Ankara, İstanbul ve Almanya ofislerimizi görün.",
   path: "/iletisim",
 });
 
@@ -43,12 +43,6 @@ const socials: { id: IconId; name: string; text: string; href: string }[] = [
     name: "Instagram",
     text: "Duyurular ve sevkiyatlarımızdan kareler",
     href: site.social.instagram,
-  },
-  {
-    id: "facebook",
-    name: "Facebook",
-    text: "Bizi takip edin, bize mesaj gönderin",
-    href: site.social.facebook,
   },
 ];
 
@@ -184,7 +178,7 @@ export default function ContactPage() {
           title="Bizi takip edin"
           lead="Güncel paylaşımlarımız için sosyal medya hesaplarımıza göz atın."
         />
-        <Stagger as="ul" className="grid gap-6 sm:grid-cols-2">
+        <Stagger as="ul" className="grid gap-6">
           {socials.map(({ id, name, text, href }) => (
             <StaggerItem as="li" key={id}>
               <HoverCard>
