@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Saira_Condensed } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { Header } from "@/components/layout/header";
 import { JsonLd } from "@/components/ui/json-ld";
 import { MotionProvider } from "@/components/ui/motion";
@@ -113,6 +114,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <Footer />
+          <BackToTop />
         </MotionProvider>
         <JsonLd data={organizationLd} />
       </body>
