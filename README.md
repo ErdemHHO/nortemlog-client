@@ -10,7 +10,6 @@ Built with Next.js (App Router), TypeScript, Tailwind CSS and framer-motion.
 | `/` | Hero, services, about, cargo types, why us, offices |
 | `/hakkimizda` | Mission, vision, principles, offices |
 | `/hizmetler` | All eight services and the cargo types carried |
-| `/teklif-al` | Quote request form |
 | `/iletisim` | Phones, WhatsApp, e-mail, map, offices, social links |
 
 ## Getting started
@@ -33,13 +32,6 @@ Environment variables (see [`.env.example`](.env.example)):
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, Open Graph |
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile link |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` | Mail transport for form submissions |
-| `INQUIRY_TO_EMAIL` | Inbox that receives quote requests |
-| `INQUIRY_WEBHOOK_URL` | Optional extra channel (Slack, CRM, ...) |
-
-Form submissions go through `POST /api/inquiry`: validated with Zod, rate limited per IP
-(5 requests / 10 minutes, in memory) and delivered by SMTP and/or webhook. In production the
-request fails when no delivery channel is configured, so leads are never dropped silently.
 
 ## Scripts
 
